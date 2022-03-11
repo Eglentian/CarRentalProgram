@@ -18,7 +18,6 @@ public final class JdbcConnection {
             Properties properties = new Properties();
             properties.load(db);
             String url = properties.getProperty("url");
-            System.out.println(url);
             String user = properties.getProperty("jdbc.user");
             String password = properties.getProperty("password");
             connection = DriverManager.getConnection(url, user, password);
