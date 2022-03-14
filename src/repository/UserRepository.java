@@ -24,12 +24,10 @@ public class UserRepository {
                 user = new User();
                 user.setId(result.getInt(1));
                 user.setName(result.getString(2));
-                user.setSurname(result.getString(3));
-                user.setBirthDate(result.getDate(4));
-                user.setRole(result.getString(5));
-                user.setEmail(result.getString(6));
-                user.setPhoneNumber(result.getString(7));
-                user.setAddress(result.getString(8));
+                user.setRole(result.getString(3));
+                user.setEmail(result.getString(4));
+                user.setPassword(result.getString(5));
+
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());

@@ -27,10 +27,13 @@ public class Main {
                         System.out.println("Welcome " + auth.getName());
                         switch (auth.getRole()) {
                             case "ADMIN":
-                                LibrarianMenu.menu();
+                                AdminMenu.menu();
+                                break;
+                            case "SHOP":
+                                BusinessMenu.menu();
                                 break;
                             case "USER":
-                                UserMenu.menu();
+                                IndividualMenu.menu();
                                 break;
                             default:
                                 System.out.println("You don't have permission to access our app");

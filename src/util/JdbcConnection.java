@@ -14,7 +14,7 @@ public final class JdbcConnection {
 
     public static Connection getConnection() {
         Connection connection = null;
-        try (FileInputStream db = new FileInputStream("db.properties")) {
+        try (FileInputStream db = new FileInputStream("jdbc/db.properties")) {
             Properties properties = new Properties();
             properties.load(db);
             String url = properties.getProperty("url");

@@ -6,25 +6,11 @@ public class User {
 
     private Integer id;
     private String name;
-    private String surname;
-    private Date birthDate;
     private String role;
     private String email;
-    private String phoneNumber;
-    private String address;
+    private String password;
 
     public User() {
-    }
-
-    public User(Integer id, String name, String surname, Date birthDate, String role, String email, String phoneNumber, String address) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.birthDate = birthDate;
-        this.role = role;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
     }
 
     public Integer getId() {
@@ -43,22 +29,6 @@ public class User {
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
     public String getRole() {
         return role;
     }
@@ -75,20 +45,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -96,12 +58,20 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", birthDate=" + birthDate +
                 ", role='" + role + '\'' +
                 ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", address='" + address + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
+
+    public User(Integer id, String name, String role, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.role = role;
+        this.email = email;
+        this.password = password;
+
+
+    }
 }
+

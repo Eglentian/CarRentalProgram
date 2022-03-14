@@ -2,9 +2,9 @@ package main;
 
 import java.util.Scanner;
 
-public final class UserMenu {
+public final class IndividualMenu {
 
-    private UserMenu() {
+    private IndividualMenu() {
     }
 
     public static void menu() {

@@ -1,25 +1,29 @@
 package main;
 
+import service.UserService;
+import service.UserServiceImpl;
+
 import java.util.Scanner;
 
-public final class LibrarianMenu {
+public final class AdminMenu {
 
-    private LibrarianMenu() {
+    private AdminMenu() {
     }
 
     public static void menu() {
-        System.out.println("Librarian menu");
+        System.out.println("Admin menu");
         char exit;
         do {
-            System.out.println("1) Register new user");
-            System.out.println("2) Add a new book");
-            System.out.println("3) List all books");
-            System.out.println("4) List of borrowed books");
-            System.out.println("5) Book details");
+            System.out.println("1) Register new shop");
+            System.out.println("2) Register a new individual");
+            System.out.println("3) List all users");
+            System.out.println("4) List of all cars");
+            System.out.println("5) Car Details");
             Scanner sc = new Scanner(System.in);
             int menuItem = sc.nextInt();
             switch (menuItem) {
                 case 1:
+                    UserService userService = new UserServiceImpl();
                     System.out.println("User details");
                     break;
                 case 2:
