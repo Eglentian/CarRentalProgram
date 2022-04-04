@@ -8,9 +8,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import static util.UserQueries.FIND_USER_BY_ID;
-import static util.UserQueries.LOGIN_USER;
+import static util.UserQueries.*;
 
 public class UserRepository {
 
@@ -27,12 +28,28 @@ public class UserRepository {
                 user.setRole(result.getString(3));
                 user.setEmail(result.getString(4));
                 user.setPassword(result.getString(5));
+                statement.executeQuery();
 
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
         return user;
+    }
+
+
+    public void createUser(User user) {
+        try (Connection connection = JdbcConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(INSERT_NEW_USER)) {
+            statement.setString(1, user.getName());
+            statement.setString(2, user.getRole());
+            statement.setString(3, user.getEmail());
+            statement.setString(4, user.getPassword());
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public AuthenticatedUser loginUser(String email, String password) {
@@ -54,4 +71,57 @@ public class UserRepository {
         }
         return auth;
     }
+
+    public List<User> getAllUsers() {
+        List<User> allUsers = new ArrayList<>();
+        try (Connection connection = JdbcConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(GET_ALL_USERS);) {
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                User newUser = new User();
+                newUser.setId(result.getInt("id"));
+                newUser.setName(result.getString("name"));
+                newUser.setRole(result.getString("role"));
+                newUser.setEmail(result.getString("email"));
+                newUser.setPassword(result.getString("password"));
+                allUsers.add(newUser);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return allUsers;
+    }
+
+    public boolean deleteUser(Integer id) {
+        User user = null;
+        try (Connection connection = JdbcConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(DELETE_USER)) {
+            statement.setInt(1, id);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    public boolean updateUser(String name, String email, String password, Integer id) {
+        try (Connection connection = JdbcConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(UPDATE_USER)) {
+            statement.setString(1, name);
+            statement.setString(2, email);
+            statement.setString(3, password);
+            statement.setInt(4, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }
+
+
+
+

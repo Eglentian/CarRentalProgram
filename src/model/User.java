@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Date;
-
 public class User {
 
     private Integer id;
@@ -60,9 +58,11 @@ public class User {
                 ", name='" + name + '\'' +
                 ", role='" + role + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
+                ", password ='" + "(hidden)" + '\'' +
                 '}';
     }
+
+
 
     public User(Integer id, String name, String role, String email, String password) {
         this.id = id;

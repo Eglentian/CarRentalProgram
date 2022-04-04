@@ -2,9 +2,11 @@ package main;
 
 import java.util.Scanner;
 
-public final class IndividualMenu {
+import static main.Main.authUser;
 
-    private IndividualMenu() {
+public final class UserMenu {
+
+    private UserMenu() {
     }
 
     public static void menu() {
@@ -12,31 +14,24 @@ public final class IndividualMenu {
         char exit;
         do {
             System.out.println("1) My details");
-            System.out.println("2) Borrow a book");
-            System.out.println("3) Return a book");
-            System.out.println("4) List of borrowed books");
-            System.out.println("5) Book details");
-            System.out.println("6) All books");
+            System.out.println("2) Rent a car");
+            System.out.println("3) List all cars");
+            System.out.println("4) See specific car parameters");
             Scanner sc = new Scanner(System.in);
             int menuItem = sc.nextInt();
             switch (menuItem) {
                 case 1:
                     System.out.println("User details");
+                    System.out.println(authUser);
                     break;
                 case 2:
-                    System.out.println("Borrow book");
+                    System.out.println("Rent a car");
                     break;
                 case 3:
-                    System.out.println("Return book");
+                    System.out.println("List all cars");
                     break;
                 case 4:
-                    System.out.println("My borrowed books");
-                    break;
-                case 5:
-                    System.out.println("Details");
-                    break;
-                case 6:
-                    System.out.println("List");
+                    System.out.println("See specific car parameters");
                     break;
                 default:
                     System.out.println("Didn't understand that");

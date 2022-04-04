@@ -4,8 +4,10 @@ import main.Main;
 import model.User;
 import repository.UserRepository;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class UserServiceImpl implements UserService {
 
@@ -13,31 +15,31 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addUser(User user) {
+        userRepository.createUser(user);
 
     }
 
     @Override
-    public User updateUser(User user) {
-        return null;
-    }
+    public boolean updateUser(Integer id) {
+        return false;}
 
     @Override
     public boolean deleteUser(Integer id) {
-        return false;
+        return userRepository.deleteUser(id);
     }
 
     @Override
     public User getUserById(Integer id) {
-        return null;
+        return userRepository.findUserById(id);
     }
 
     @Override
     public List<User> getAllUsers() {
-        return Collections.emptyList();
+        return userRepository.getAllUsers();
     }
 
     @Override
     public void loginUser(String email, String password) {
-        Main.auth = userRepository.loginUser(email, password);
+        Main.authUser = userRepository.loginUser(email, password);
     }
 }

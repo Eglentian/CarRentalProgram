@@ -9,7 +9,7 @@ public interface UserService {
 
     void addUser(User user);
 
-    User updateUser(User user);
+    boolean updateUser(Integer id);
 
     boolean deleteUser(Integer id);
 
