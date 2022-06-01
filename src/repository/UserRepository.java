@@ -98,22 +98,23 @@ public class UserRepository {
         try (Connection connection = JdbcConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(DELETE_USER)) {
             statement.setInt(1, id);
-            statement.executeUpdate();
+            return statement.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return true;
+        return false;
     }
 
-    public boolean updateUser(String name, String email, String password, Integer id) {
+    public boolean updateUser(Integer id) {
+        User user = new User();
         try (Connection connection = JdbcConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_USER)) {
-            statement.setString(1, name);
-            statement.setString(2, email);
-            statement.setString(3, password);
+            statement.setString(1, user.getName());
+            statement.setString(2 , user.getEmail());
+            statement.setString(3, user.getPassword());
             statement.setInt(4, id);
-            statement.executeUpdate();
+            statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }

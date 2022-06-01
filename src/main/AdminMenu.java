@@ -24,10 +24,10 @@ public final class AdminMenu {
             System.out.println("2) Register a new user"); //ok
             System.out.println("3) List of all users"); //ok
             System.out.println("4) List of all shops"); //ok
-            System.out.println("5) See any user Details"); //ok
+            System.out.println("5) See any user details"); //ok
             System.out.println("6) See any shop details"); //ok
-            System.out.println("7) Update an existing user");
-            System.out.println("8) Update an existing shop");
+            System.out.println("7) Update an existing user");// ok
+            System.out.println("8) Update an existing shop");//TO BE IMPLEMENTED
             System.out.println("9) Delete an existing user"); //ok
             System.out.println("10) Delete an existing shop"); //ok
 
@@ -117,10 +117,9 @@ public final class AdminMenu {
                     }
                     System.out.println("Set an ID of the user you want to update: ");
                     int userToUpdate = sc.nextInt();
-                    userService.updateUser(userToUpdate);
                     UserService userService3 = new UserServiceImpl();
-                    int userIDSelect = sc.nextInt();
-                    User user1 = userService.getUserById(userIDSelect);
+                    User user1 = userService.getUserById(userToUpdate);
+                    sc = new Scanner(System.in);
                     System.out.println("Set new name:");
                     user1.setName(sc.nextLine());
                     System.out.println("Set new email:");
@@ -128,10 +127,32 @@ public final class AdminMenu {
                     System.out.println("Set new password:");
                     user1.setPassword(sc.nextLine());
                     System.out.println(user1);
-                    userService3.updateUser(userIDSelect);
+                    userService3.updateUser(userToUpdate);
                     System.out.println("User updated successfully !");
                     break;
                 case 8:
+                    sc = new Scanner(System.in);
+                    System.out.println("Update an existing shop");
+                    System.out.println("Here is a List of all shops with ID");
+                    List<Shop> shopsList1 = shopService.getAllShops();
+                    for (Shop updateShop : shopsList1){
+                        System.out.println(updateShop);
+                    }
+                    System.out.println("Set an ID of the shop you want to update: ");
+                    int shopToUpdate = sc.nextInt();
+                    ShopService shopService3 = new ShopServiceImpl();
+                    Shop shop1 = shopService.getShopById(shopToUpdate);
+                    sc = new Scanner(System.in);
+                    System.out.println("Set new name:");
+                    shop1.setName(sc.nextLine());
+                    System.out.println("Set new email:");
+                    shop1.setEmail(sc.nextLine());
+                    System.out.println("Set new password:");
+                    shop1.setPassword(sc.nextLine());
+                    System.out.println(shop1);
+                    shopService3.updateShop(shopToUpdate);
+                    System.out.println("Shop updated successfully !");
+                    break;
 
 
 
