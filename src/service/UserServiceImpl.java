@@ -20,8 +20,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean updateUser(Integer id) {
-        return userRepository.updateUser(id);
+    public boolean updateUser(User user) {
+        return userRepository.updateUser(user);
     }
 
     @Override

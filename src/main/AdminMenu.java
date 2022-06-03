@@ -127,7 +127,7 @@ public final class AdminMenu {
                     System.out.println("Set new password:");
                     user1.setPassword(sc.nextLine());
                     System.out.println(user1);
-                    userService3.updateUser(userToUpdate);
+                    userService3.updateUser(user1);
                     System.out.println("User updated successfully !");
                     break;
                 case 8:

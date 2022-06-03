@@ -106,14 +106,14 @@ public class UserRepository {
         return false;
     }
 
-    public boolean updateUser(Integer id) {
-        User user = new User();
+    public boolean updateUser(User user) {
+
         try (Connection connection = JdbcConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_USER)) {
             statement.setString(1, user.getName());
             statement.setString(2 , user.getEmail());
             statement.setString(3, user.getPassword());
-            statement.setInt(4, id);
+            statement.setInt(4, user.getId());
             statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
