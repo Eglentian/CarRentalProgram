@@ -17,8 +17,8 @@ public class ShopServiceImpl implements ShopService {
     }
 
     @Override
-    public boolean updateShop(Integer id) {
-        return shopRepository.updateShop(id);
+    public boolean updateShop(Shop shop) {
+        return shopRepository.updateShop(shop);
     }
 
     @Override

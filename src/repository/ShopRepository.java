@@ -104,14 +104,14 @@ public class ShopRepository {
         } return true;
     }
 
-    public boolean updateShop(Integer id) {
-        Shop shop = new Shop();
+    public boolean updateShop(Shop shop) {
+
         try (Connection connection = JdbcConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_SHOP)) {
             statement.setString(1, shop.getName());
             statement.setString(2 , shop.getEmail());
             statement.setString(3, shop.getPassword());
-            statement.setInt(4, id);
+            statement.setInt(4, shop.getId());
             statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();

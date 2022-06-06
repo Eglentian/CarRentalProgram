@@ -27,7 +27,7 @@ public final class AdminMenu {
             System.out.println("5) See any user details"); //ok
             System.out.println("6) See any shop details"); //ok
             System.out.println("7) Update an existing user");// ok
-            System.out.println("8) Update an existing shop");//TO BE IMPLEMENTED
+            System.out.println("8) Update an existing shop");//ok
             System.out.println("9) Delete an existing user"); //ok
             System.out.println("10) Delete an existing shop"); //ok
 
@@ -134,13 +134,13 @@ public final class AdminMenu {
                     sc = new Scanner(System.in);
                     System.out.println("Update an existing shop");
                     System.out.println("Here is a List of all shops with ID");
-                    List<Shop> shopsList1 = shopService.getAllShops();
-                    for (Shop updateShop : shopsList1){
+                    List<Shop> shopList1 = shopService.getAllShops();
+                    for (Shop updateShop : shopList1){
                         System.out.println(updateShop);
                     }
                     System.out.println("Set an ID of the shop you want to update: ");
                     int shopToUpdate = sc.nextInt();
-                    ShopService shopService3 = new ShopServiceImpl();
+                    ShopService shopService4 = new ShopServiceImpl();
                     Shop shop1 = shopService.getShopById(shopToUpdate);
                     sc = new Scanner(System.in);
                     System.out.println("Set new name:");
@@ -150,12 +150,9 @@ public final class AdminMenu {
                     System.out.println("Set new password:");
                     shop1.setPassword(sc.nextLine());
                     System.out.println(shop1);
-                    shopService3.updateShop(shopToUpdate);
+                    shopService4.updateShop(shop1);
                     System.out.println("Shop updated successfully !");
                     break;
-
-
-
                 case 9:
                     System.out.println("Delete an existing user");
                     System.out.println("Here is a List of all users with ID");

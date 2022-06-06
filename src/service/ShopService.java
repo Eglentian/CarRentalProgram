@@ -8,7 +8,7 @@ public interface ShopService {
 
     void addShop(Shop shop);
 
-    boolean updateShop(Integer id);
+    boolean updateShop(Shop shop);
 
     boolean deleteShop(Integer id);
 
